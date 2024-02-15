@@ -18,7 +18,13 @@ function setupScene() {
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-    const imageNames = ['ikea_katalog_1.png', 'ikea_katalog_2.png', 'ikea_katalog_3.png', 'ikea_katalog_4.png'];
+    const imageNames = ['https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg?auto=compress&cs=tinysrgb&w=400',
+     'https://images.pexels.com/photos/2647714/pexels-photo-2647714.jpeg?auto=compress&cs=tinysrgb&w=400',
+     'https://images.pexels.com/photos/905198/pexels-photo-905198.jpeg?auto=compress&cs=tinysrgb&w=400',
+     'https://images.pexels.com/photos/3049121/pexels-photo-3049121.jpeg?auto=compress&cs=tinysrgb&w=400',
+     'https://images.pexels.com/photos/3356416/pexels-photo-3356416.jpeg?auto=compress&cs=tinysrgb&w=400',
+     'https://images.pexels.com/photos/2263510/pexels-photo-2263510.jpeg?auto=compress&cs=tinysrgb&w=400'
+    ];
 
     const textureLoader = new THREE.TextureLoader();
     let currentPageIndex = 0;
@@ -44,14 +50,14 @@ function CreatePages() {
 
 function CreatePage(leftImage, rightImage) {
     const pageGeometry = new THREE.PlaneGeometry(2.8, 3.8);
-    const textureLeft = textureLoader.load(`public${leftImage}`);
+    const textureLeft = textureLoader.load(`${leftImage}`);
     const pageMaterialLeft = new THREE.MeshBasicMaterial({ map: textureLeft, side: THREE.DoubleSide });
     const leftPage = new THREE.Mesh(pageGeometry, pageMaterialLeft);
     leftPage.position.set(-1.25, 0, 0);
     leftPage.rotateY(0.5);
     scene.add(leftPage);
 
-    const textureRight = textureLoader.load(`public/${rightImage}`);
+    const textureRight = textureLoader.load(`${rightImage}`);
     const pageMaterialRight = new THREE.MeshBasicMaterial({ map: textureRight, side: THREE.DoubleSide });
     const rightPage = new THREE.Mesh(pageGeometry, pageMaterialRight);
     rightPage.position.set(1.25, 0, 0);
