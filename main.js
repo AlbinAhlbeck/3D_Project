@@ -44,14 +44,14 @@ function CreatePages() {
 
 function CreatePage(leftImage, rightImage) {
     const pageGeometry = new THREE.PlaneGeometry(2.8, 3.8);
-    const textureLeft = textureLoader.load(`${leftImage}`);
+    const textureLeft = textureLoader.load(`public${leftImage}`);
     const pageMaterialLeft = new THREE.MeshBasicMaterial({ map: textureLeft, side: THREE.DoubleSide });
     const leftPage = new THREE.Mesh(pageGeometry, pageMaterialLeft);
     leftPage.position.set(-1.25, 0, 0);
     leftPage.rotateY(0.5);
     scene.add(leftPage);
 
-    const textureRight = textureLoader.load(`${rightImage}`);
+    const textureRight = textureLoader.load(`public/${rightImage}`);
     const pageMaterialRight = new THREE.MeshBasicMaterial({ map: textureRight, side: THREE.DoubleSide });
     const rightPage = new THREE.Mesh(pageGeometry, pageMaterialRight);
     rightPage.position.set(1.25, 0, 0);
